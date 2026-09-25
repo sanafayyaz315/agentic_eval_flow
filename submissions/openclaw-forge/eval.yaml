@@ -48,6 +48,13 @@ runner:
         - id: rits/zai-org/glm-5-3
           name: GLM 5.3
           api: openai-completions
+        # The diagnostic PipelineRun selects this exact id. Without a matching
+        # entry, AEH adds it with its 8192-token default output limit.
+        - id: rits/zai-org/GLM-5-3-Flash
+          name: GLM 5.3 Flash
+          api: openai-completions
+          reasoning: true
+          maxTokens: 16384
 execution:
   mode: case
   prompt: "{{ input.prompt }}"
@@ -76,6 +83,10 @@ outputs:
   - path: output
     schema: |
       response.txt: agent final response (morning briefing or analysis panel)
+  - path: brief.json
+    schema: Canonical published morning briefing, when produced
+  - path: .openclaw/tmp
+    schema: Briefing collector evidence and intermediate diagnostic files
 
 judges:
   # --- Prioritization judges (morning-briefing case) ---
@@ -376,11 +387,28 @@ judges:
   - name: response_received
     check: |
       response = outputs.get("output_content", "") or ""
-      return len(response.strip()) > 0
+      return bool(response.strip()) and "The tool run finished, but no final summary was produced" not in response
     feedback_type: bool
 
-# Thresholds / regression gating disabled for now — scores are still computed
-# and shown in the report; the run will not exit 1 on low rubric means.
+  - name: published_brief
+    if: "annotations.get('expected_top_of_mind')"
+    check: |
+      import json
+      files = outputs.get("files") or {}
+      briefs = [content for path, content in files.items() if path.endswith("brief.json")]
+      if len(briefs) != 1:
+          return False
+      try:
+          brief = json.loads(briefs[0]) if isinstance(briefs[0], str) else briefs[0]
+      except (TypeError, ValueError):
+          return False
+      return isinstance(brief, dict) and bool(brief.get("evidenceId"))
+    feedback_type: bool
+
+thresholds:
+  published_brief: {min_pass_rate: 1.0, max_error_rate: 0.0}
+
+# Qualitative rubric thresholds remain disabled while we diagnose agent output.
 # thresholds:
 #   prioritization_recall: {min_mean: 5.0}
 #   prioritization_precision: {min_mean: 5.0}
