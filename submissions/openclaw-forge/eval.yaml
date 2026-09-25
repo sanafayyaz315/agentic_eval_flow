@@ -21,6 +21,10 @@ runner:
   # public OpenAI embeddings endpoint with the namespace inference key.
   # Disable it so the only model request is the intended GLM call.
   settings:
+    # Diagnostic run: retain the pre-filter model stream and log full visible
+    # assistant text. Raw artifacts can contain seeded provider data.
+    log_level: DEBUG
+    capture_raw_model_stream: true
     plugins:
       entries:
         memory-core:
