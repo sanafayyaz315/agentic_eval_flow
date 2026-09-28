@@ -25,6 +25,8 @@ runner:
     # assistant text. Raw artifacts can contain seeded provider data.
     log_level: DEBUG
     capture_raw_model_stream: true
+    # Separate in-sandbox provider check; does not change the agent's maxTokens.
+    llm_preflight_max_tokens: 512
     plugins:
       entries:
         memory-core:
