@@ -1,0 +1,83 @@
+# Shareable saw-mpk morning-briefing example, based on gateway-cap-100.yaml.
+# Copy this file for each run and record the exact copy and returned run name.
+#
+# Deployed saw-mpk Pipeline defaults observed 2026-09-28 (before overrides):
+#   submission repo: https://github.com/RHEcosystemAppEng/agentic_eval_flow.git @ main
+#   pipeline helper repo: https://github.com/RHEcosystemAppEng/agentic_eval_flow.git @ main
+#   harness repo: https://github.com/GuyZivRH/agent-eval-harness.git @ feat/aeh-openshell-openclaw
+#   SAW image: ghcr.io/sanafayyaz315/openclaw-saw-agent@sha256:f993f1ef122a9f9ca6406af5d38b9c28d11da5f3e93d1dbbd0387cf792f65b4c
+# The Evaluate Task's own fallback image differs; the Pipeline's image default
+# is the effective one when openshell-sandbox-image is omitted from a run.
+#
+# This example overrides the submission, harness, and image defaults below.
+# Its pinned eval.yaml contains:
+#   runner.settings.llm_preflight_max_tokens: 512  (preflight provider request)
+#   runner.providers.inference.models[GLM-5-3-Flash].maxTokens: 128000
+# Preflight tokens are configured in eval.yaml, not a PipelineRun parameter.
+# To change them, commit eval.yaml and replace the revision below. The selected
+# harness branch must contain the configurable-preflight implementation.
+# The harness is cloned by branch; verify its resolved SHA in TaskRun setup.
+# The gateway, Secret names, host alias, and service URLs below are saw-mpk-specific.
+apiVersion: tekton.dev/v1
+kind: PipelineRun
+metadata:
+  generateName: sana-morning-briefing-gateway-template-
+spec:
+  pipelineRef:
+    name: abevalflow-pipeline-openshell
+  params:
+    - name: repo-url
+      value: https://github.com/sanafayyaz315/agentic_eval_flow.git
+    - name: revision
+      value: 219468160921758740e9eadcc8a904029808e504
+    - name: submission-dir
+      value: openclaw-forge
+    - name: eval-engine
+      value: aeh_openshell_openclaw
+    - name: agent-eval-harness-repo-url
+      value: https://github.com/sanafayyaz315/agent-eval-harness.git
+    - name: agent-eval-harness-repo-revision
+      value: fix/configurable-openclaw-preflight-tokens
+    - name: openshell-gateway-endpoint
+      value: https://host.containers.internal:17670
+    - name: openshell-mtls-secret
+      value: openshell-saw-agent-mtls
+    - name: openshell-ai-gateway-ca-secret
+      value: forge-agent-upstream-tls
+    - name: openshell-sandbox-image
+      value: ghcr.io/sanafayyaz315/openclaw-saw-agent@sha256:02769ecf1aadd24cbefe4ac2648dd0d75f80473871e688a9e4c5739ba9229809
+    - name: m365-inbox-record-cap
+      value: "100"
+    - name: llm-model
+      value: rits/zai-org/GLM-5-3-Flash
+    - name: aeh-model-override
+      value: inference/rits/zai-org/GLM-5-3-Flash
+    - name: aeh-judge-model-override
+      value: rits/zai-org/GLM-5-3-Flash
+    - name: llm-api-base
+      value: http://litellm.saw-mpk.svc.cluster.local:4000
+    - name: llm-base-url
+      value: http://litellm.saw-mpk.svc.cluster.local:4000/v1
+    - name: enable-mlflow
+      value: "true"
+    - name: mlflow-tracking-uri
+      value: http://abevalflow-mlflow.saw-mpk.svc.cluster.local:5000
+  taskRunTemplate:
+    serviceAccountName: pipeline
+    podTemplate:
+      hostAliases:
+        - ip: 172.30.206.137
+          hostnames:
+            - host.containers.internal
+  timeouts:
+    pipeline: 2h
+    tasks: 1h30m
+  workspaces:
+    - name: shared-workspace
+      volumeClaimTemplate:
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 5Gi
