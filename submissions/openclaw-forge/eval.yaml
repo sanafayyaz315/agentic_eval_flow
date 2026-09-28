@@ -58,7 +58,7 @@ runner:
           name: GLM 5.3 Flash
           api: openai-completions
           reasoning: true
-          maxTokens: 16384
+          maxTokens: 128000
 execution:
   mode: case
   prompt: "{{ input.prompt }}"
