@@ -113,6 +113,10 @@ spec:
     - name: openshell-sandbox-image
       type: string
       default: "ghcr.io/rh-forge/openclaw-saw-agent@sha256:bcc55e9b7a36d5f65e8ffc75962496f8b3617762a4cdb37fd1cf54611b72d41a"
+    - name: m365-inbox-record-cap
+      type: string
+      default: "400"
+      description: Maximum inbox messages collected by the diagnostic image (1-400)
     - name: openshell-provider
       type: string
       default: "forge-ai-gateway,m365-read-intervm,slack-read-proxy,drafts-service-agent"
@@ -277,6 +281,8 @@ spec:
           value: $(params.openshell-gateway-endpoint)
         - name: openshell-sandbox-image
           value: $(params.openshell-sandbox-image)
+        - name: m365-inbox-record-cap
+          value: $(params.m365-inbox-record-cap)
         - name: openshell-provider
           value: $(params.openshell-provider)
         - name: openshell-mtls-secret

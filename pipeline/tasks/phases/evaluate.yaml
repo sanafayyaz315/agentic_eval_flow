@@ -197,6 +197,10 @@ spec:
     - name: openshell-sandbox-image
       type: string
       default: "ghcr.io/rh-forge/openclaw-saw-agent@sha256:bcc55e9b7a36d5f65e8ffc75962496f8b3617762a4cdb37fd1cf54611b72d41a"
+    - name: m365-inbox-record-cap
+      type: string
+      default: "400"
+      description: Maximum inbox messages collected by the diagnostic image (1-400)
       description: >-
         Immutable SAW Chief-of-Staff image with the daily-briefing skill and
         governed M365/Slack tools.
@@ -1687,6 +1691,8 @@ spec:
           value: "forge-image"
         - name: AGENT_EVAL_OPENSHELL_IMAGE
           value: "$(params.openshell-sandbox-image)"
+        - name: M365_INBOX_RECORD_CAP
+          value: "$(params.m365-inbox-record-cap)"
         - name: AGENT_EVAL_OPENSHELL_PROVIDER
           value: "$(params.openshell-provider)"
         - name: AGENT_EVAL_FORGE_AI_GATEWAY_CA_FILE

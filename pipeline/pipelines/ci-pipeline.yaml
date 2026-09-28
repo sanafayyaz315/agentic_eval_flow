@@ -202,6 +202,10 @@ spec:
     - name: openshell-sandbox-image
       type: string
       default: "quay.io/aipcc/base-images/agentic/openclaw:0.0.1-1787755593"
+    - name: m365-inbox-record-cap
+      type: string
+      default: "400"
+      description: Maximum inbox messages collected by the diagnostic image (1-400)
     - name: openshell-cli-version
       type: string
       default: "0.0.111"
@@ -523,6 +527,8 @@ spec:
           value: $(params.openshell-gateway-endpoint)
         - name: openshell-sandbox-image
           value: $(params.openshell-sandbox-image)
+        - name: m365-inbox-record-cap
+          value: $(params.m365-inbox-record-cap)
         - name: openshell-cli-version
           value: $(params.openshell-cli-version)
         - name: openshell-provider

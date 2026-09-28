@@ -64,6 +64,7 @@ execution:
   prompt: "{{ input.prompt }}"
   timeout: 900
   env:
+    M365_INBOX_RECORD_CAP: "$M365_INBOX_RECORD_CAP"
     # Provider placeholders and proxy/CA environment come from the supervisor.
     FORGE_MODEL_ID: "rits/zai-org/glm-5-3"
     FORGE_SOURCES: "m365-only"
