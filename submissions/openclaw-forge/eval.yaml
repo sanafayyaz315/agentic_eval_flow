@@ -21,8 +21,7 @@ runner:
   # public OpenAI embeddings endpoint with the namespace inference key.
   # Disable it so the only model request is the intended GLM call.
   settings:
-    # Diagnostic run: retain the pre-filter model stream and log full visible
-    # assistant text. Raw artifacts can contain seeded provider data.
+    # Test branch only: retain the pre-filter model stream and visible assistant text.
     log_level: DEBUG
     capture_raw_model_stream: true
     # Separate in-sandbox provider check; does not change the agent's maxTokens.
@@ -54,8 +53,8 @@ runner:
         - id: rits/zai-org/glm-5-3
           name: GLM 5.3
           api: openai-completions
-        # The diagnostic PipelineRun selects this exact id. Without a matching
-        # entry, AEH adds it with its 8192-token default output limit.
+        # When a PipelineRun selects this exact id, keep the intended output
+        # budget; otherwise AEH adds it with its 8192-token default.
         - id: rits/zai-org/GLM-5-3-Flash
           name: GLM 5.3 Flash
           api: openai-completions
@@ -409,7 +408,8 @@ judges:
           brief = json.loads(briefs[0]) if isinstance(briefs[0], str) else briefs[0]
       except (TypeError, ValueError):
           return False
-      return isinstance(brief, dict) and bool(brief.get("evidenceId"))
+      return (isinstance(brief, dict) and bool(brief.get("evidenceId"))
+              and brief.get("scope") == "full")
     feedback_type: bool
 
 thresholds:
