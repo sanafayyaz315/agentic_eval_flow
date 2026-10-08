@@ -358,7 +358,7 @@ judges:
   # --- Non-LLM checks (case-scoped where specified) ---
   - name: used_m365_tools
     # The analysis-panel case has no collector artifact contract yet.
-    if: "annotations.get('expected_top_of_mind')"
+    if: "annotations.get('requires_published_brief')"
     arguments:
       expected_account: tbx-demo2@dev.mscloud.ibm.com  # scenes/monday-acquisition.yaml
     check: |
@@ -443,6 +443,251 @@ judges:
             or coverage(manifest, "meetings") != meeting_count):
           return False
       return True
+    feedback_type: bool
+
+  - name: sealed_brief_evidence
+    if: "annotations.get('requires_published_brief')"
+    check: |
+      import json
+      files = outputs.get("files") or {}
+      def load(name):
+        path = ".openclaw/tmp/" + name
+        raw = files.get(path + "/" + name, files.get(path))
+        try:
+          return json.loads(raw) if isinstance(raw, str) else None
+        except (TypeError, ValueError):
+          return None
+      evidence, index = load("brief.evidence.json"), load("brief.index.json")
+      if not isinstance(evidence, dict) or not isinstance(index, dict):
+        return False
+      evidence_id = evidence.get("evidenceId")
+      if (not evidence_id or evidence.get("sealed") is not True
+          or index.get("evidenceId") != evidence_id):
+        return False
+      calls = set()
+      for event in outputs.get("events") or []:
+        if not isinstance(event, dict):
+          continue
+        if event.get("type") == "assistant":
+          for tool in event.get("tools") or []:
+            if (isinstance(tool, dict) and tool.get("name") == "exec"
+                and (tool.get("input") or {}).get("command") == "node tools/collect-brief-evidence.mjs seal"
+                and tool.get("id")):
+              calls.add(tool["id"])
+        elif (event.get("type") == "tool_result"
+              and event.get("tool_use_id") in calls
+              and event.get("tool_name") == "exec"
+              and event.get("is_error") is False):
+          return True
+      return False
+    feedback_type: bool
+
+  - name: reviewed_brief_batches
+    if: "annotations.get('requires_published_brief')"
+    check: |
+      import json
+      files = outputs.get("files") or {}
+      path = ".openclaw/tmp/brief.evidence.json"
+      raw = files.get(path + "/brief.evidence.json", files.get(path))
+      try:
+        evidence = json.loads(raw) if isinstance(raw, str) else None
+      except (TypeError, ValueError):
+        return False
+      if not isinstance(evidence, dict) or evidence.get("sealed") is not True:
+        return False
+      batches = evidence.get("batches")
+      if not isinstance(batches, list):
+        return False
+      expected = {}
+      for batch in batches:
+        if not isinstance(batch, dict) or not isinstance(batch.get("id"), str):
+          return False
+        batch_id = batch["id"]
+        if batch_id in expected or batch.get("path") != ".openclaw/tmp/batches/" + batch_id + ".json":
+          return False
+        expected[batch_id] = batch["path"]
+      if not expected:
+        return True  # A full run with no conversations has no batch work.
+
+      pending_spawns, pending_reads = {}, {}
+      spawned, read_back = set(), set()
+      yielded = False
+      for event in outputs.get("events") or []:
+        if not isinstance(event, dict):
+          continue
+        if event.get("type") == "assistant":
+          for tool in event.get("tools") or []:
+            if not isinstance(tool, dict) or not tool.get("id"):
+              continue
+            name, args = tool.get("name"), tool.get("input") or {}
+            if name == "sessions_spawn" and args.get("agentId") == "brief-reader" and args.get("lightContext") is True:
+              task = args.get("task") or ""
+              for batch_id, batch_path in expected.items():
+                if batch_path in task:
+                  pending_spawns[tool["id"]] = batch_id
+            elif name == "read":
+              path = args.get("path") or ""
+              for batch_id in expected:
+                if path.endswith("/batches/" + batch_id + ".result.json"):
+                  pending_reads[tool["id"]] = batch_id
+            elif name == "sessions_yield":
+              yielded = True
+        elif event.get("type") == "tool_result" and event.get("is_error") is False:
+          tool_id = event.get("tool_use_id")
+          result = event.get("result")
+          if tool_id in pending_spawns and event.get("tool_name") == "sessions_spawn":
+            try:
+              payload = json.loads(result) if isinstance(result, str) else result
+            except (TypeError, ValueError):
+              payload = None
+            if isinstance(payload, dict) and payload.get("status") == "accepted":
+              spawned.add(pending_spawns[tool_id])
+          if tool_id in pending_reads and event.get("tool_name") == "read":
+            try:
+              payload = json.loads(result) if isinstance(result, str) else result
+            except (TypeError, ValueError):
+              payload = None
+            if (isinstance(payload, dict)
+                and payload.get("batchId") == pending_reads[tool_id]
+                and payload.get("evidenceId") == evidence.get("evidenceId")):
+              read_back.add(pending_reads[tool_id])
+      return yielded and set(expected).issubset(spawned) and set(expected).issubset(read_back)
+    feedback_type: bool
+
+  - name: composed_full_brief
+    if: "annotations.get('requires_published_brief')"
+    check: |
+      import json
+      files = outputs.get("files") or {}
+      raw = files.get("brief.json/brief.json", files.get("brief.json"))
+      try:
+        brief = json.loads(raw) if isinstance(raw, str) else None
+      except (TypeError, ValueError):
+        return False
+      if not isinstance(brief, dict) or brief.get("scope") != "full" or not brief.get("evidenceId"):
+        return False
+      pending = set()
+      expected = "composed full brief candidate for evidence " + brief["evidenceId"]
+      for event in outputs.get("events") or []:
+        if not isinstance(event, dict):
+          continue
+        if event.get("type") == "assistant":
+          for tool in event.get("tools") or []:
+            if not isinstance(tool, dict):
+              continue
+            command = (tool.get("input") or {}).get("command")
+            if (tool.get("name") == "exec" and isinstance(command, str)
+                and command.startswith("node tools/compose-brief.mjs ") and tool.get("id")):
+              pending.add(tool["id"])
+        elif (event.get("type") == "tool_result"
+              and event.get("tool_use_id") in pending
+              and event.get("tool_name") == "exec"
+              and event.get("is_error") is False
+              and expected in str(event.get("result") or "")):
+          return True
+      return False
+    feedback_type: bool
+
+  - name: called_brief_publisher
+    if: "annotations.get('requires_published_brief')"
+    check: |
+      # This checks invocation, not publication success. published_brief checks
+      # the final artifact; shell failures may still have is_error=false.
+      import json
+      files = outputs.get("files") or {}
+      raw = files.get("brief.json/brief.json", files.get("brief.json"))
+      try:
+        brief = json.loads(raw) if isinstance(raw, str) else None
+      except (TypeError, ValueError):
+        return False
+      if not isinstance(brief, dict) or not brief.get("evidenceId") or brief.get("scope") != "full":
+        return False
+      expected = "composed full brief candidate for evidence " + brief["evidenceId"]
+      compose_calls, publisher_calls = set(), set()
+      full_composed = False
+      for event in outputs.get("events") or []:
+        if not isinstance(event, dict):
+          continue
+        if event.get("type") == "assistant":
+          for tool in event.get("tools") or []:
+            if not isinstance(tool, dict) or tool.get("name") != "exec" or not tool.get("id"):
+              continue
+            command = (tool.get("input") or {}).get("command")
+            if isinstance(command, str) and command.startswith("node tools/compose-brief.mjs "):
+              compose_calls.add(tool["id"])
+            elif command == "node tools/publish-brief.mjs" and full_composed:
+              publisher_calls.add(tool["id"])
+        elif event.get("type") == "tool_result" and event.get("tool_name") == "exec":
+          tool_id = event.get("tool_use_id")
+          if (tool_id in compose_calls and event.get("is_error") is False
+              and expected in str(event.get("result") or "")):
+            full_composed = True
+          elif tool_id in publisher_calls:
+            return True
+      return False
+    feedback_type: bool
+
+  - name: full_brief_stage_order
+    if: "annotations.get('requires_published_brief')"
+    check: |
+      import json
+      files = outputs.get("files") or {}
+      raw = files.get("brief.json/brief.json", files.get("brief.json"))
+      try:
+        brief = json.loads(raw) if isinstance(raw, str) else None
+      except (TypeError, ValueError):
+        return False
+      if not isinstance(brief, dict) or brief.get("scope") != "full" or not brief.get("evidenceId"):
+        return False
+      events = outputs.get("events") or []
+      calls, compose_ids = [], set()
+      composed_at = None
+      marker = "composed full brief candidate for evidence " + brief["evidenceId"]
+      for position, event in enumerate(events):
+        if not isinstance(event, dict):
+          continue
+        if event.get("type") == "assistant":
+          for tool in event.get("tools") or []:
+            if not isinstance(tool, dict) or not tool.get("id"):
+              continue
+            name, args = tool.get("name"), tool.get("input") or {}
+            if name == "exec":
+              command = args.get("command") or ""
+              if command == "node tools/collect-brief-evidence.mjs":
+                calls.append(("sweep", position))
+              elif command == "node tools/collect-brief-evidence.mjs seal":
+                calls.append(("seal", position))
+              elif isinstance(command, str) and command.startswith("node tools/compose-brief.mjs "):
+                compose_ids.add(tool["id"])
+              elif command == "node tools/publish-brief.mjs":
+                calls.append(("publish", position))
+            elif name == "sessions_spawn" and args.get("agentId") == "brief-reader":
+              calls.append(("spawn", position))
+            elif name == "read" and "/batches/" in str(args.get("path")) and str(args.get("path")).endswith(".result.json"):
+              calls.append(("batch-read", position))
+        elif (event.get("type") == "tool_result"
+              and event.get("tool_use_id") in compose_ids
+              and event.get("is_error") is False
+              and marker in str(event.get("result") or "")):
+          composed_at = position
+      if composed_at is None:
+        return False
+      def before(kind, limit):
+        return [pos for label, pos in calls if label == kind and pos < limit]
+      def after(kind, limit):
+        return [pos for label, pos in calls if label == kind and pos > limit]
+      if not after("publish", composed_at):
+        return False
+      for seal_at in reversed(before("seal", composed_at)):
+        if not before("sweep", seal_at):
+          continue
+        spawns = [pos for pos in after("spawn", seal_at) if pos < composed_at]
+        reads = [pos for pos in after("batch-read", seal_at) if pos < composed_at]
+        if not spawns and not reads:
+          return True  # No batch work for a calendar-only or empty full run.
+        if spawns and reads and min(spawns) < max(reads):
+          return True
+      return False
     feedback_type: bool
 
   - name: used_catalog_skills
