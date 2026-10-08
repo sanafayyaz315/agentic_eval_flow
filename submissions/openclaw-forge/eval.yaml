@@ -87,6 +87,12 @@ outputs:
       response.txt: agent final response (morning briefing or analysis panel)
   - path: brief.json
     schema: Canonical published morning briefing, when produced
+  # Diagnostic-only collector artifacts. The ledger contains private mail
+  # content; keep downloaded run artifacts in the ignored, restricted archive.
+  - path: .openclaw/tmp/brief.index.json
+    schema: Compact collector index with source record IDs and references
+  - path: .openclaw/tmp/brief.evidence.json
+    schema: Sealed collector evidence ledger with source records
 
 judges:
   # --- Prioritization judges (morning-briefing case) ---
