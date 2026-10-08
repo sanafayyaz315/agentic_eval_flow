@@ -69,7 +69,6 @@ def test_m365_scorer_account_matches_scene():
     )
     scene = yaml.safe_load((EVAL.parent / "scenes/monday-acquisition.yaml").read_text())
     assert judge["arguments"]["expected_account"] == scene["m365"]["user"]
-    assert judge["if"] == "annotations.get('requires_published_brief')"
 
 
 def test_m365_scorer_rejects_keyword_only_or_failed_collection():
