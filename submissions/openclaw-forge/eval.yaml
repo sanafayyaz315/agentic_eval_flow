@@ -74,10 +74,10 @@ dataset:
     # Persona, skills, schemas and tools are supplied by the pinned image only.
     files: []
 
-  path: cases
+  path: cases-morning-only
   schema: |
     Each case has:
-    - input.yaml: agent prompt for producing a morning briefing or analysis panel
+    - input.yaml: agent prompt for producing a morning briefing
     - annotations.yaml: ground truth expectations (expected items, groupings,
       facts, sources) used by LLM rubric judges
 
