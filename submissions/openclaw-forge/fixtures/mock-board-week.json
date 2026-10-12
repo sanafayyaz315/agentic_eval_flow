@@ -1,0 +1,494 @@
+{
+  "schemaVersion": 1,
+  "kind": "forge_brief_provider_responses",
+  "scenario": "mock_board_week",
+  "asOf": "2026-10-12T11:05:00Z",
+  "microsoft365": {
+    "/v1.0/me": {
+      "id": "mock-mira-shah",
+      "displayName": "Mira Shah",
+      "mail": "mira.shah@example.com",
+      "userPrincipalName": "mira.shah@example.com"
+    },
+    "/v1.0/me/mailFolders/inbox/messages": {
+      "value": [
+        {
+          "id": "mock-atlas-legal",
+          "conversationId": "conv-atlas-renewal",
+          "subject": "Re: Atlas renewal credit decision",
+          "from": {
+            "emailAddress": {
+              "name": "Nina Patel",
+              "address": "nina.patel@example.com"
+            }
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Nina Patel",
+              "address": "nina.patel@example.com"
+            }
+          },
+          "replyTo": [
+            {
+              "emailAddress": {
+                "name": "Nina Patel",
+                "address": "nina.patel@example.com"
+              }
+            }
+          ],
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Mira Shah",
+                "address": "mira.shah@example.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "body": {
+            "contentType": "text",
+            "content": "Legal reviewed the Atlas renewal. The proposed service credit is capped at 8 percent and does not change the standard data terms. Mira, please approve or reject that capped credit by Wednesday, October 14 at 14:00 UTC so Sales can give Atlas a firm answer before the 16:00 UTC customer call. Do not describe the credit as approved yet."
+          },
+          "bodyPreview": "Legal reviewed the Atlas renewal. The proposed service credit is capped at 8 percent and does not change the standard data terms. Mira, please approve or reject that capped credit by Wednesday, October 14 at 14:00 UTC so Sales can give Atlas a firm answer",
+          "receivedDateTime": "2026-10-12T10:15:00Z",
+          "isRead": false,
+          "hasAttachments": false
+        },
+        {
+          "id": "mock-atlas-original",
+          "conversationId": "conv-atlas-renewal",
+          "subject": "Atlas renewal credit decision",
+          "from": {
+            "emailAddress": {
+              "name": "Priya Nair",
+              "address": "priya.nair@example.com"
+            }
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Priya Nair",
+              "address": "priya.nair@example.com"
+            }
+          },
+          "replyTo": [
+            {
+              "emailAddress": {
+                "name": "Priya Nair",
+                "address": "priya.nair@example.com"
+              }
+            }
+          ],
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Mira Shah",
+                "address": "mira.shah@example.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "body": {
+            "contentType": "text",
+            "content": "Atlas is renewing a $2.4 million annual contract. Sales requests an 8 percent service credit to close the renewal. Mira is the required approver. Please decide by Wednesday, October 14 at 14:00 UTC; our Atlas renewal call is at 16:00 UTC. Legal is reviewing the cap and data terms."
+          },
+          "bodyPreview": "Atlas is renewing a $2.4 million annual contract. Sales requests an 8 percent service credit to close the renewal. Mira is the required approver. Please decide by Wednesday, October 14 at 14:00 UTC; our Atlas renewal call is at 16:00 UTC. Legal is reviewi",
+          "receivedDateTime": "2026-10-12T08:20:00Z",
+          "isRead": false,
+          "hasAttachments": false
+        },
+        {
+          "id": "mock-hiring-exception",
+          "conversationId": "conv-hiring-exception",
+          "subject": "Q4 hiring exception for support team",
+          "from": {
+            "emailAddress": {
+              "name": "Priya Nair",
+              "address": "priya.nair@example.com"
+            }
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Priya Nair",
+              "address": "priya.nair@example.com"
+            }
+          },
+          "replyTo": [
+            {
+              "emailAddress": {
+                "name": "Priya Nair",
+                "address": "priya.nair@example.com"
+              }
+            }
+          ],
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Mira Shah",
+                "address": "mira.shah@example.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "body": {
+            "contentType": "text",
+            "content": "Separate from the Atlas renewal: please decide whether to approve one Q4 support engineer exception to the hiring pause by Friday, October 16 at 17:00 UTC. Finance can fund one role, but no offer has been made. Mira owns this decision; a rejection means the support team must adjust its coverage plan."
+          },
+          "bodyPreview": "Separate from the Atlas renewal: please decide whether to approve one Q4 support engineer exception to the hiring pause by Friday, October 16 at 17:00 UTC. Finance can fund one role, but no offer has been made. Mira owns this decision; a rejection means t",
+          "receivedDateTime": "2026-10-12T09:30:00Z",
+          "isRead": false,
+          "hasAttachments": false
+        },
+        {
+          "id": "mock-migration-fyi",
+          "conversationId": "conv-data-migration",
+          "subject": "FYI: Dublin data migration complete",
+          "from": {
+            "emailAddress": {
+              "name": "Owen Kelly",
+              "address": "owen.kelly@example.com"
+            }
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Owen Kelly",
+              "address": "owen.kelly@example.com"
+            }
+          },
+          "replyTo": [
+            {
+              "emailAddress": {
+                "name": "Owen Kelly",
+                "address": "owen.kelly@example.com"
+              }
+            }
+          ],
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Mira Shah",
+                "address": "mira.shah@example.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "body": {
+            "contentType": "text",
+            "content": "The Dublin data migration finished overnight. Validation passed and customer traffic is stable. This is an FYI; no executive approval or action is requested. Operations will keep monitoring the service this week."
+          },
+          "bodyPreview": "The Dublin data migration finished overnight. Validation passed and customer traffic is stable. This is an FYI; no executive approval or action is requested. Operations will keep monitoring the service this week.",
+          "receivedDateTime": "2026-10-12T11:00:00Z",
+          "isRead": true,
+          "hasAttachments": false
+        },
+        {
+          "id": "mock-newsletter",
+          "conversationId": "conv-newsletter",
+          "subject": "October community newsletter",
+          "from": {
+            "emailAddress": {
+              "name": "Community Updates",
+              "address": "newsletter@example.com"
+            }
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Community Updates",
+              "address": "newsletter@example.com"
+            }
+          },
+          "replyTo": [
+            {
+              "emailAddress": {
+                "name": "Community Updates",
+                "address": "newsletter@example.com"
+              }
+            }
+          ],
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Mira Shah",
+                "address": "mira.shah@example.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "body": {
+            "contentType": "text",
+            "content": "This month: volunteer photos, a webinar recording, and office social events. This automated newsletter has no business deadline or executive action."
+          },
+          "bodyPreview": "This month: volunteer photos, a webinar recording, and office social events. This automated newsletter has no business deadline or executive action.",
+          "receivedDateTime": "2026-10-12T07:45:00Z",
+          "isRead": true,
+          "hasAttachments": false
+        }
+      ]
+    },
+    "/v1.0/me/mailFolders/sentitems/messages": {
+      "value": []
+    },
+    "/v1.0/me/calendarView": {
+      "value": [
+        {
+          "id": "mock-atlas-call",
+          "type": "singleInstance",
+          "subject": "Atlas renewal customer call",
+          "bodyPreview": "Discuss the renewal and the proposed 8 percent credit. Credit decision needed before the call; no approval has been given yet.",
+          "start": {
+            "dateTime": "2026-10-14T16:00:00",
+            "timeZone": "UTC"
+          },
+          "end": {
+            "dateTime": "2026-10-14T16:30:00",
+            "timeZone": "UTC"
+          },
+          "organizer": {
+            "emailAddress": {
+              "name": "Priya Nair",
+              "address": "priya.nair@example.com"
+            }
+          },
+          "attendees": [
+            {
+              "emailAddress": {
+                "name": "Mira Shah",
+                "address": "mira.shah@example.com"
+              },
+              "type": "required",
+              "status": {
+                "response": "accepted",
+                "time": "2026-10-12T09:00:00Z"
+              }
+            },
+            {
+              "emailAddress": {
+                "name": "Priya Nair",
+                "address": "priya.nair@example.com"
+              },
+              "type": "required",
+              "status": {
+                "response": "accepted",
+                "time": "2026-10-12T09:00:00Z"
+              }
+            }
+          ],
+          "location": {
+            "displayName": "Video conference"
+          },
+          "isAllDay": false,
+          "isCancelled": false
+        }
+      ]
+    },
+    "/v1.0/me/messages/mock-atlas-legal": {
+      "id": "mock-atlas-legal",
+      "conversationId": "conv-atlas-renewal",
+      "subject": "Re: Atlas renewal credit decision",
+      "from": {
+        "emailAddress": {
+          "name": "Nina Patel",
+          "address": "nina.patel@example.com"
+        }
+      },
+      "sender": {
+        "emailAddress": {
+          "name": "Nina Patel",
+          "address": "nina.patel@example.com"
+        }
+      },
+      "replyTo": [
+        {
+          "emailAddress": {
+            "name": "Nina Patel",
+            "address": "nina.patel@example.com"
+          }
+        }
+      ],
+      "toRecipients": [
+        {
+          "emailAddress": {
+            "name": "Mira Shah",
+            "address": "mira.shah@example.com"
+          }
+        }
+      ],
+      "ccRecipients": [],
+      "body": {
+        "contentType": "text",
+        "content": "Legal reviewed the Atlas renewal. The proposed service credit is capped at 8 percent and does not change the standard data terms. Mira, please approve or reject that capped credit by Wednesday, October 14 at 14:00 UTC so Sales can give Atlas a firm answer before the 16:00 UTC customer call. Do not describe the credit as approved yet."
+      },
+      "bodyPreview": "Legal reviewed the Atlas renewal. The proposed service credit is capped at 8 percent and does not change the standard data terms. Mira, please approve or reject that capped credit by Wednesday, October 14 at 14:00 UTC so Sales can give Atlas a firm answer",
+      "receivedDateTime": "2026-10-12T10:15:00Z",
+      "isRead": false,
+      "hasAttachments": false
+    },
+    "/v1.0/me/messages/mock-atlas-original": {
+      "id": "mock-atlas-original",
+      "conversationId": "conv-atlas-renewal",
+      "subject": "Atlas renewal credit decision",
+      "from": {
+        "emailAddress": {
+          "name": "Priya Nair",
+          "address": "priya.nair@example.com"
+        }
+      },
+      "sender": {
+        "emailAddress": {
+          "name": "Priya Nair",
+          "address": "priya.nair@example.com"
+        }
+      },
+      "replyTo": [
+        {
+          "emailAddress": {
+            "name": "Priya Nair",
+            "address": "priya.nair@example.com"
+          }
+        }
+      ],
+      "toRecipients": [
+        {
+          "emailAddress": {
+            "name": "Mira Shah",
+            "address": "mira.shah@example.com"
+          }
+        }
+      ],
+      "ccRecipients": [],
+      "body": {
+        "contentType": "text",
+        "content": "Atlas is renewing a $2.4 million annual contract. Sales requests an 8 percent service credit to close the renewal. Mira is the required approver. Please decide by Wednesday, October 14 at 14:00 UTC; our Atlas renewal call is at 16:00 UTC. Legal is reviewing the cap and data terms."
+      },
+      "bodyPreview": "Atlas is renewing a $2.4 million annual contract. Sales requests an 8 percent service credit to close the renewal. Mira is the required approver. Please decide by Wednesday, October 14 at 14:00 UTC; our Atlas renewal call is at 16:00 UTC. Legal is reviewi",
+      "receivedDateTime": "2026-10-12T08:20:00Z",
+      "isRead": false,
+      "hasAttachments": false
+    },
+    "/v1.0/me/messages/mock-hiring-exception": {
+      "id": "mock-hiring-exception",
+      "conversationId": "conv-hiring-exception",
+      "subject": "Q4 hiring exception for support team",
+      "from": {
+        "emailAddress": {
+          "name": "Priya Nair",
+          "address": "priya.nair@example.com"
+        }
+      },
+      "sender": {
+        "emailAddress": {
+          "name": "Priya Nair",
+          "address": "priya.nair@example.com"
+        }
+      },
+      "replyTo": [
+        {
+          "emailAddress": {
+            "name": "Priya Nair",
+            "address": "priya.nair@example.com"
+          }
+        }
+      ],
+      "toRecipients": [
+        {
+          "emailAddress": {
+            "name": "Mira Shah",
+            "address": "mira.shah@example.com"
+          }
+        }
+      ],
+      "ccRecipients": [],
+      "body": {
+        "contentType": "text",
+        "content": "Separate from the Atlas renewal: please decide whether to approve one Q4 support engineer exception to the hiring pause by Friday, October 16 at 17:00 UTC. Finance can fund one role, but no offer has been made. Mira owns this decision; a rejection means the support team must adjust its coverage plan."
+      },
+      "bodyPreview": "Separate from the Atlas renewal: please decide whether to approve one Q4 support engineer exception to the hiring pause by Friday, October 16 at 17:00 UTC. Finance can fund one role, but no offer has been made. Mira owns this decision; a rejection means t",
+      "receivedDateTime": "2026-10-12T09:30:00Z",
+      "isRead": false,
+      "hasAttachments": false
+    },
+    "/v1.0/me/messages/mock-migration-fyi": {
+      "id": "mock-migration-fyi",
+      "conversationId": "conv-data-migration",
+      "subject": "FYI: Dublin data migration complete",
+      "from": {
+        "emailAddress": {
+          "name": "Owen Kelly",
+          "address": "owen.kelly@example.com"
+        }
+      },
+      "sender": {
+        "emailAddress": {
+          "name": "Owen Kelly",
+          "address": "owen.kelly@example.com"
+        }
+      },
+      "replyTo": [
+        {
+          "emailAddress": {
+            "name": "Owen Kelly",
+            "address": "owen.kelly@example.com"
+          }
+        }
+      ],
+      "toRecipients": [
+        {
+          "emailAddress": {
+            "name": "Mira Shah",
+            "address": "mira.shah@example.com"
+          }
+        }
+      ],
+      "ccRecipients": [],
+      "body": {
+        "contentType": "text",
+        "content": "The Dublin data migration finished overnight. Validation passed and customer traffic is stable. This is an FYI; no executive approval or action is requested. Operations will keep monitoring the service this week."
+      },
+      "bodyPreview": "The Dublin data migration finished overnight. Validation passed and customer traffic is stable. This is an FYI; no executive approval or action is requested. Operations will keep monitoring the service this week.",
+      "receivedDateTime": "2026-10-12T11:00:00Z",
+      "isRead": true,
+      "hasAttachments": false
+    },
+    "/v1.0/me/messages/mock-newsletter": {
+      "id": "mock-newsletter",
+      "conversationId": "conv-newsletter",
+      "subject": "October community newsletter",
+      "from": {
+        "emailAddress": {
+          "name": "Community Updates",
+          "address": "newsletter@example.com"
+        }
+      },
+      "sender": {
+        "emailAddress": {
+          "name": "Community Updates",
+          "address": "newsletter@example.com"
+        }
+      },
+      "replyTo": [
+        {
+          "emailAddress": {
+            "name": "Community Updates",
+            "address": "newsletter@example.com"
+          }
+        }
+      ],
+      "toRecipients": [
+        {
+          "emailAddress": {
+            "name": "Mira Shah",
+            "address": "mira.shah@example.com"
+          }
+        }
+      ],
+      "ccRecipients": [],
+      "body": {
+        "contentType": "text",
+        "content": "This month: volunteer photos, a webinar recording, and office social events. This automated newsletter has no business deadline or executive action."
+      },
+      "bodyPreview": "This month: volunteer photos, a webinar recording, and office social events. This automated newsletter has no business deadline or executive action.",
+      "receivedDateTime": "2026-10-12T07:45:00Z",
+      "isRead": true,
+      "hasAttachments": false
+    }
+  }
+}

@@ -1,0 +1,19 @@
+# Ground truth for fixtures/mock-board-week.json (scenario mock_board_week).
+# These expectations describe source facts, not a precomputed model answer.
+expected_top_of_mind:
+  - "Decide whether to approve Atlas's proposed 8 percent service credit for a $2.4 million annual renewal by Wednesday, October 14 at 14:00 UTC, before the 16:00 UTC customer call."
+  - "Decide whether to approve one Q4 support engineer exception to the hiring pause by Friday, October 16 at 17:00 UTC."
+expected_first: "Atlas renewal credit decision"
+expected_fyi:
+  - "Dublin data migration completed with validation passed and stable customer traffic; no executive action requested."
+expected_excluded:
+  - "October community newsletter"
+expected_bundles:
+  atlas_renewal:
+    - "Email: Atlas renewal credit decision (Priya Nair's original request)"
+    - "Email: Re: Atlas renewal credit decision (Nina Patel's legal follow-up)"
+    - "Calendar: Atlas renewal customer call on October 14 at 16:00 UTC"
+expected_separate:
+  - source_a: "Email: Atlas renewal credit decision"
+    source_b: "Email: Q4 hiring exception for support team"
+    reason: "Priya Nair raised both, but renewal credit and hiring are separate decisions."

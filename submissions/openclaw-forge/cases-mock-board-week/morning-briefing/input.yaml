@@ -1,0 +1,15 @@
+prompt: |
+  Read these exact workspace files before retrieving data:
+  /sandbox/AGENTS.md,
+  /sandbox/skills/daily-briefing/SKILL.md, and
+  /sandbox/skills/microsoft365/SKILL.md. Do not substitute another workspace or home-directory path.
+
+  Prepare Mira Shah's executive morning briefing using the connected M365
+  information. Follow the installed daily-briefing skill's retrieval,
+  evidence, grouping, prioritization, and safety rules.
+
+  Organize the briefing into TOP OF MIND, FYI, and LOOKING AHEAD. For each
+  decision, identify who raised it, the actual deadline, why Mira needs to
+  act, and the supporting email or calendar source. Group related records
+  without merging separate decisions from the same person. Do not present
+  a proposed approval as an approval already given.

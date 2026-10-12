@@ -1,0 +1,20 @@
+name: forge-mock-board-week-m365
+description: |
+  Synthetic executive briefing for Mira Shah. M365 responses come from
+  fixtures/mock-board-week.json through PK's forge-nommen mock service.
+  The mock file is loaded into the service separately from this scene.
+
+slack:
+  enabled: false
+  note: The mock currently serves M365 Graph responses only.
+
+m365:
+  user: mira.shah@example.com
+  seed: external
+  expected_themes:
+    - Atlas renewal credit decision before the customer call
+    - Q4 support hiring exception
+    - Dublin data migration FYI
+
+crabline_seeds: []
+smolclaw_seeds: []
