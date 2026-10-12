@@ -1,0 +1,20 @@
+name: forge-mock-tom-forge-pr-m365
+description: |
+  Synthetic executive briefing for Tom Hanks. M365 responses come from
+  fixtures/mock-tom-forge-pr.json through PK's forge-nommen mock service.
+  The mock file is loaded into the service separately from this scene.
+
+slack:
+  enabled: false
+  note: The mock currently serves M365 Graph responses only.
+
+m365:
+  user: tom.hanks@example.com
+  seed: external
+  expected_themes:
+    - Forge customer meeting preparation and commitments
+    - Forge customer access PR #248 review
+    - Staging rollout and customer feedback FYIs
+
+crabline_seeds: []
+smolclaw_seeds: []

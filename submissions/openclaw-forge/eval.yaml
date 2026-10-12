@@ -2,7 +2,7 @@
 # Scene-based: all messages seeded once at run start from scenes/<name>.yaml
 name: forge-eval-rubrics
 
-scene: monday-acquisition
+scene: mock-tom-forge-pr
 
 # Pipeline evaluate overrides experiment to the Tekton PipelineRun name
 # and sets tracking_uri via MLFLOW_TRACKING_URI / log_aeh_mlflow patch.
@@ -74,7 +74,7 @@ dataset:
     # Persona, skills, schemas and tools are supplied by the pinned image only.
     files: []
 
-  path: cases
+  path: cases-mock-tom-forge-pr
   schema: |
     Each case has:
     - input.yaml: agent prompt for producing a morning briefing or analysis panel
@@ -360,7 +360,7 @@ judges:
     # The analysis-panel case has no collector artifact contract yet.
     if: "annotations.get('expected_top_of_mind')"
     arguments:
-      expected_account: tbx-demo2@dev.mscloud.ibm.com  # scenes/monday-acquisition.yaml
+      expected_account: tom.hanks@example.com  # scenes/mock-tom-forge-pr.yaml
     check: |
       import json
 

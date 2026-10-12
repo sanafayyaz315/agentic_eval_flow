@@ -1,0 +1,22 @@
+# Ground truth for fixtures/mock-tom-forge-pr.json (scenario mock_tom_forge_pr).
+# These expectations describe source facts, not a precomputed model answer.
+requires_published_brief: true
+expected_top_of_mind:
+  - "Review Forge customer access PR #248 by Monday, October 12 at 16:00 UTC; it is awaiting Tom's review and has not been approved or merged."
+  - "Review the agenda and confirm customer commitments with Avery Chen by Monday, October 12 at 17:00 UTC, before the Forge customer meeting on Tuesday, October 13 at 14:00 UTC."
+expected_first: "Forge customer access PR #248 review due October 12 at 16:00 UTC"
+expected_fyi:
+  - "Forge staging rollout completed and deployment and smoke checks passed; Operations is monitoring and no executive action is requested."
+  - "Forge customer feedback summary is available; Customer Success is tracking the themes and no decision or reply is requested."
+expected_excluded:
+  - "Optional Forge swag survey, despite its URGENT subject and 15:00 UTC deadline"
+  - "Resolved customer access incident; checks are green and no further action is needed"
+  - "Optional team lunch on October 13"
+expected_bundles:
+  forge_customer_meeting:
+    - "Email: Forge customer meeting: agenda and commitments"
+    - "Calendar: Forge customer meeting on October 13 at 14:00 UTC"
+expected_separate:
+  - source_a: "Email: Forge customer meeting: agenda and commitments"
+    source_b: "Email: Review needed: Forge customer access PR #248"
+    reason: "Customer meeting commitments and PR review are separate actions with separate deadlines."

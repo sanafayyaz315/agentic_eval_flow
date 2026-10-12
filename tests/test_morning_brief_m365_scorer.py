@@ -7,6 +7,8 @@ import yaml
 
 
 EVAL = Path(__file__).resolve().parents[1] / "submissions/openclaw-forge/eval.yaml"
+CONFIG = yaml.safe_load(EVAL.read_text())
+SCENE = yaml.safe_load((EVAL.parent / "scenes" / f"{CONFIG['scene']}.yaml").read_text())
 
 
 def _check(outputs):
@@ -34,7 +36,7 @@ def _record(message_count=2):
         "evidenceId": "evidence-1",
         "coverage": coverage,
         "microsoft365": {
-            "account": {"mail": "tbx-demo2@dev.mscloud.ibm.com"},
+            "account": {"mail": SCENE["m365"]["user"]},
             "messages": [{"id": f"message-{i}"} for i in range(message_count)],
             "events": [],
         },
@@ -75,8 +77,7 @@ def test_m365_scorer_account_matches_scene():
         j for j in yaml.safe_load(EVAL.read_text())["judges"]
         if j["name"] == "used_m365_tools"
     )
-    scene = yaml.safe_load((EVAL.parent / "scenes/monday-acquisition.yaml").read_text())
-    assert judge["arguments"]["expected_account"] == scene["m365"]["user"]
+    assert judge["arguments"]["expected_account"] == SCENE["m365"]["user"]
 
 
 def test_m365_scorer_rejects_keyword_only_or_failed_collection():

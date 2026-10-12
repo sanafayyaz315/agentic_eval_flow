@@ -1,0 +1,605 @@
+{
+  "schemaVersion": 1,
+  "kind": "forge_brief_provider_responses",
+  "scenario": "mock_tom_forge_pr",
+  "asOf": "2026-10-12T11:05:00Z",
+  "microsoft365": {
+    "/v1.0/me": {
+      "id": "mock-tom-hanks",
+      "displayName": "Tom Hanks",
+      "mail": "tom.hanks@example.com",
+      "userPrincipalName": "tom.hanks@example.com"
+    },
+    "/v1.0/me/mailFolders/inbox/messages": {
+      "value": [
+        {
+          "id": "tom-forge-customers",
+          "conversationId": "conv-tom-forge-customers",
+          "subject": "Forge customer meeting: agenda and commitments",
+          "from": {
+            "emailAddress": {
+              "name": "Avery Chen",
+              "address": "avery.chen@example.com"
+            }
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Avery Chen",
+              "address": "avery.chen@example.com"
+            }
+          },
+          "replyTo": [
+            {
+              "emailAddress": {
+                "name": "Avery Chen",
+                "address": "avery.chen@example.com"
+              }
+            }
+          ],
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Tom Hanks",
+                "address": "tom.hanks@example.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "body": {
+            "contentType": "text",
+            "content": "Tom, please review the agenda and confirm which customer commitments we can make before tomorrow's Forge customer meeting on Tuesday, October 13 at 14:00 UTC. The customers expect an answer on the rollout timeline. Please send your position to me by 17:00 UTC today; no commitments have been approved yet."
+          },
+          "bodyPreview": "Tom, please review the agenda and confirm which customer commitments we can make before tomorrow's Forge customer meeting on Tuesday, October 13 at 14:00 UTC. The customers expect an answer on the rollout timeline. Please send your position to me by 17:00",
+          "receivedDateTime": "2026-10-12T09:20:00Z",
+          "isRead": false,
+          "hasAttachments": false
+        },
+        {
+          "id": "tom-forge-pr-248",
+          "conversationId": "conv-tom-forge-pr-248",
+          "subject": "Review needed: Forge customer access PR #248",
+          "from": {
+            "emailAddress": {
+              "name": "Jordan Lee",
+              "address": "jordan.lee@example.com"
+            }
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Jordan Lee",
+              "address": "jordan.lee@example.com"
+            }
+          },
+          "replyTo": [
+            {
+              "emailAddress": {
+                "name": "Jordan Lee",
+                "address": "jordan.lee@example.com"
+              }
+            }
+          ],
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Tom Hanks",
+                "address": "tom.hanks@example.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "body": {
+            "contentType": "text",
+            "content": "PR #248 changes Forge customer access controls and is awaiting your review. Please review the access behavior and approve or request changes by Monday, October 12 at 16:00 UTC so engineering can decide whether to include it in the next release. It has not been approved or merged."
+          },
+          "bodyPreview": "PR #248 changes Forge customer access controls and is awaiting your review. Please review the access behavior and approve or request changes by Monday, October 12 at 16:00 UTC so engineering can decide whether to include it in the next release. It has not",
+          "receivedDateTime": "2026-10-12T10:10:00Z",
+          "isRead": false,
+          "hasAttachments": false
+        },
+        {
+          "id": "tom-staging-fyi",
+          "conversationId": "conv-tom-staging-fyi",
+          "subject": "FYI: Forge staging rollout complete",
+          "from": {
+            "emailAddress": {
+              "name": "Morgan Patel",
+              "address": "morgan.patel@example.com"
+            }
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Morgan Patel",
+              "address": "morgan.patel@example.com"
+            }
+          },
+          "replyTo": [
+            {
+              "emailAddress": {
+                "name": "Morgan Patel",
+                "address": "morgan.patel@example.com"
+              }
+            }
+          ],
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Tom Hanks",
+                "address": "tom.hanks@example.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "body": {
+            "contentType": "text",
+            "content": "The Forge staging rollout completed this morning. Deployment and smoke checks passed. Operations will continue monitoring; no executive action is requested."
+          },
+          "bodyPreview": "The Forge staging rollout completed this morning. Deployment and smoke checks passed. Operations will continue monitoring; no executive action is requested.",
+          "receivedDateTime": "2026-10-12T08:40:00Z",
+          "isRead": true,
+          "hasAttachments": false
+        },
+        {
+          "id": "tom-feedback-fyi",
+          "conversationId": "conv-tom-feedback-fyi",
+          "subject": "FYI: Forge customer feedback summary available",
+          "from": {
+            "emailAddress": {
+              "name": "Riley Brooks",
+              "address": "riley.brooks@example.com"
+            }
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Riley Brooks",
+              "address": "riley.brooks@example.com"
+            }
+          },
+          "replyTo": [
+            {
+              "emailAddress": {
+                "name": "Riley Brooks",
+                "address": "riley.brooks@example.com"
+              }
+            }
+          ],
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Tom Hanks",
+                "address": "tom.hanks@example.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "body": {
+            "contentType": "text",
+            "content": "The latest Forge customer feedback summary is available for reference. Customer Success is tracking the themes. This is informational; no decision or reply is requested from Tom."
+          },
+          "bodyPreview": "The latest Forge customer feedback summary is available for reference. Customer Success is tracking the themes. This is informational; no decision or reply is requested from Tom.",
+          "receivedDateTime": "2026-10-12T09:50:00Z",
+          "isRead": true,
+          "hasAttachments": false
+        },
+        {
+          "id": "tom-swag-noise",
+          "conversationId": "conv-tom-swag-noise",
+          "subject": "URGENT: Forge swag survey closes today",
+          "from": {
+            "emailAddress": {
+              "name": "Community Updates",
+              "address": "community@example.com"
+            }
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Community Updates",
+              "address": "community@example.com"
+            }
+          },
+          "replyTo": [
+            {
+              "emailAddress": {
+                "name": "Community Updates",
+                "address": "community@example.com"
+              }
+            }
+          ],
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Tom Hanks",
+                "address": "tom.hanks@example.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "body": {
+            "contentType": "text",
+            "content": "The optional Forge swag preference survey closes today at 15:00 UTC. Participation is voluntary and has no customer, release, or executive decision impact."
+          },
+          "bodyPreview": "The optional Forge swag preference survey closes today at 15:00 UTC. Participation is voluntary and has no customer, release, or executive decision impact.",
+          "receivedDateTime": "2026-10-12T10:45:00Z",
+          "isRead": false,
+          "hasAttachments": false
+        },
+        {
+          "id": "tom-incident-noise",
+          "conversationId": "conv-tom-incident-noise",
+          "subject": "Re: customer access incident \u2014 resolved",
+          "from": {
+            "emailAddress": {
+              "name": "Casey Rivera",
+              "address": "casey.rivera@example.com"
+            }
+          },
+          "sender": {
+            "emailAddress": {
+              "name": "Casey Rivera",
+              "address": "casey.rivera@example.com"
+            }
+          },
+          "replyTo": [
+            {
+              "emailAddress": {
+                "name": "Casey Rivera",
+                "address": "casey.rivera@example.com"
+              }
+            }
+          ],
+          "toRecipients": [
+            {
+              "emailAddress": {
+                "name": "Tom Hanks",
+                "address": "tom.hanks@example.com"
+              }
+            }
+          ],
+          "ccRecipients": [],
+          "body": {
+            "contentType": "text",
+            "content": "The customer access incident was resolved yesterday. Checks are green and the incident is closed. No further action is needed from Tom."
+          },
+          "bodyPreview": "The customer access incident was resolved yesterday. Checks are green and the incident is closed. No further action is needed from Tom.",
+          "receivedDateTime": "2026-10-12T10:55:00Z",
+          "isRead": false,
+          "hasAttachments": false
+        }
+      ]
+    },
+    "/v1.0/me/mailFolders/sentitems/messages": {
+      "value": []
+    },
+    "/v1.0/me/calendarView": {
+      "value": [
+        {
+          "id": "tom-forge-customer-meeting",
+          "type": "singleInstance",
+          "subject": "Forge customer meeting",
+          "bodyPreview": "Discuss rollout timeline with Forge customers. Tom should confirm commitments with Avery beforehand.",
+          "start": {
+            "dateTime": "2026-10-13T14:00:00",
+            "timeZone": "UTC"
+          },
+          "end": {
+            "dateTime": "2026-10-13T14:45:00",
+            "timeZone": "UTC"
+          },
+          "organizer": {
+            "emailAddress": {
+              "name": "Avery Chen",
+              "address": "avery.chen@example.com"
+            }
+          },
+          "attendees": [
+            {
+              "emailAddress": {
+                "name": "Tom Hanks",
+                "address": "tom.hanks@example.com"
+              },
+              "type": "required",
+              "status": {
+                "response": "accepted",
+                "time": "2026-10-12T09:30:00Z"
+              }
+            }
+          ],
+          "location": {
+            "displayName": "Video conference"
+          },
+          "isAllDay": false,
+          "isCancelled": false
+        },
+        {
+          "id": "tom-optional-team-lunch",
+          "type": "singleInstance",
+          "subject": "Optional team lunch",
+          "bodyPreview": "Optional social lunch; no business decision or preparation needed.",
+          "start": {
+            "dateTime": "2026-10-13T12:00:00",
+            "timeZone": "UTC"
+          },
+          "end": {
+            "dateTime": "2026-10-13T13:00:00",
+            "timeZone": "UTC"
+          },
+          "organizer": {
+            "emailAddress": {
+              "name": "Community Updates",
+              "address": "community@example.com"
+            }
+          },
+          "attendees": [
+            {
+              "emailAddress": {
+                "name": "Tom Hanks",
+                "address": "tom.hanks@example.com"
+              },
+              "type": "optional",
+              "status": {
+                "response": "tentativelyAccepted",
+                "time": "2026-10-12T09:00:00Z"
+              }
+            }
+          ],
+          "location": {
+            "displayName": "Office caf\u00e9"
+          },
+          "isAllDay": false,
+          "isCancelled": false
+        }
+      ]
+    },
+    "/v1.0/me/messages/tom-forge-customers": {
+      "id": "tom-forge-customers",
+      "conversationId": "conv-tom-forge-customers",
+      "subject": "Forge customer meeting: agenda and commitments",
+      "from": {
+        "emailAddress": {
+          "name": "Avery Chen",
+          "address": "avery.chen@example.com"
+        }
+      },
+      "sender": {
+        "emailAddress": {
+          "name": "Avery Chen",
+          "address": "avery.chen@example.com"
+        }
+      },
+      "replyTo": [
+        {
+          "emailAddress": {
+            "name": "Avery Chen",
+            "address": "avery.chen@example.com"
+          }
+        }
+      ],
+      "toRecipients": [
+        {
+          "emailAddress": {
+            "name": "Tom Hanks",
+            "address": "tom.hanks@example.com"
+          }
+        }
+      ],
+      "ccRecipients": [],
+      "body": {
+        "contentType": "text",
+        "content": "Tom, please review the agenda and confirm which customer commitments we can make before tomorrow's Forge customer meeting on Tuesday, October 13 at 14:00 UTC. The customers expect an answer on the rollout timeline. Please send your position to me by 17:00 UTC today; no commitments have been approved yet."
+      },
+      "bodyPreview": "Tom, please review the agenda and confirm which customer commitments we can make before tomorrow's Forge customer meeting on Tuesday, October 13 at 14:00 UTC. The customers expect an answer on the rollout timeline. Please send your position to me by 17:00",
+      "receivedDateTime": "2026-10-12T09:20:00Z",
+      "isRead": false,
+      "hasAttachments": false
+    },
+    "/v1.0/me/messages/tom-forge-pr-248": {
+      "id": "tom-forge-pr-248",
+      "conversationId": "conv-tom-forge-pr-248",
+      "subject": "Review needed: Forge customer access PR #248",
+      "from": {
+        "emailAddress": {
+          "name": "Jordan Lee",
+          "address": "jordan.lee@example.com"
+        }
+      },
+      "sender": {
+        "emailAddress": {
+          "name": "Jordan Lee",
+          "address": "jordan.lee@example.com"
+        }
+      },
+      "replyTo": [
+        {
+          "emailAddress": {
+            "name": "Jordan Lee",
+            "address": "jordan.lee@example.com"
+          }
+        }
+      ],
+      "toRecipients": [
+        {
+          "emailAddress": {
+            "name": "Tom Hanks",
+            "address": "tom.hanks@example.com"
+          }
+        }
+      ],
+      "ccRecipients": [],
+      "body": {
+        "contentType": "text",
+        "content": "PR #248 changes Forge customer access controls and is awaiting your review. Please review the access behavior and approve or request changes by Monday, October 12 at 16:00 UTC so engineering can decide whether to include it in the next release. It has not been approved or merged."
+      },
+      "bodyPreview": "PR #248 changes Forge customer access controls and is awaiting your review. Please review the access behavior and approve or request changes by Monday, October 12 at 16:00 UTC so engineering can decide whether to include it in the next release. It has not",
+      "receivedDateTime": "2026-10-12T10:10:00Z",
+      "isRead": false,
+      "hasAttachments": false
+    },
+    "/v1.0/me/messages/tom-staging-fyi": {
+      "id": "tom-staging-fyi",
+      "conversationId": "conv-tom-staging-fyi",
+      "subject": "FYI: Forge staging rollout complete",
+      "from": {
+        "emailAddress": {
+          "name": "Morgan Patel",
+          "address": "morgan.patel@example.com"
+        }
+      },
+      "sender": {
+        "emailAddress": {
+          "name": "Morgan Patel",
+          "address": "morgan.patel@example.com"
+        }
+      },
+      "replyTo": [
+        {
+          "emailAddress": {
+            "name": "Morgan Patel",
+            "address": "morgan.patel@example.com"
+          }
+        }
+      ],
+      "toRecipients": [
+        {
+          "emailAddress": {
+            "name": "Tom Hanks",
+            "address": "tom.hanks@example.com"
+          }
+        }
+      ],
+      "ccRecipients": [],
+      "body": {
+        "contentType": "text",
+        "content": "The Forge staging rollout completed this morning. Deployment and smoke checks passed. Operations will continue monitoring; no executive action is requested."
+      },
+      "bodyPreview": "The Forge staging rollout completed this morning. Deployment and smoke checks passed. Operations will continue monitoring; no executive action is requested.",
+      "receivedDateTime": "2026-10-12T08:40:00Z",
+      "isRead": true,
+      "hasAttachments": false
+    },
+    "/v1.0/me/messages/tom-feedback-fyi": {
+      "id": "tom-feedback-fyi",
+      "conversationId": "conv-tom-feedback-fyi",
+      "subject": "FYI: Forge customer feedback summary available",
+      "from": {
+        "emailAddress": {
+          "name": "Riley Brooks",
+          "address": "riley.brooks@example.com"
+        }
+      },
+      "sender": {
+        "emailAddress": {
+          "name": "Riley Brooks",
+          "address": "riley.brooks@example.com"
+        }
+      },
+      "replyTo": [
+        {
+          "emailAddress": {
+            "name": "Riley Brooks",
+            "address": "riley.brooks@example.com"
+          }
+        }
+      ],
+      "toRecipients": [
+        {
+          "emailAddress": {
+            "name": "Tom Hanks",
+            "address": "tom.hanks@example.com"
+          }
+        }
+      ],
+      "ccRecipients": [],
+      "body": {
+        "contentType": "text",
+        "content": "The latest Forge customer feedback summary is available for reference. Customer Success is tracking the themes. This is informational; no decision or reply is requested from Tom."
+      },
+      "bodyPreview": "The latest Forge customer feedback summary is available for reference. Customer Success is tracking the themes. This is informational; no decision or reply is requested from Tom.",
+      "receivedDateTime": "2026-10-12T09:50:00Z",
+      "isRead": true,
+      "hasAttachments": false
+    },
+    "/v1.0/me/messages/tom-swag-noise": {
+      "id": "tom-swag-noise",
+      "conversationId": "conv-tom-swag-noise",
+      "subject": "URGENT: Forge swag survey closes today",
+      "from": {
+        "emailAddress": {
+          "name": "Community Updates",
+          "address": "community@example.com"
+        }
+      },
+      "sender": {
+        "emailAddress": {
+          "name": "Community Updates",
+          "address": "community@example.com"
+        }
+      },
+      "replyTo": [
+        {
+          "emailAddress": {
+            "name": "Community Updates",
+            "address": "community@example.com"
+          }
+        }
+      ],
+      "toRecipients": [
+        {
+          "emailAddress": {
+            "name": "Tom Hanks",
+            "address": "tom.hanks@example.com"
+          }
+        }
+      ],
+      "ccRecipients": [],
+      "body": {
+        "contentType": "text",
+        "content": "The optional Forge swag preference survey closes today at 15:00 UTC. Participation is voluntary and has no customer, release, or executive decision impact."
+      },
+      "bodyPreview": "The optional Forge swag preference survey closes today at 15:00 UTC. Participation is voluntary and has no customer, release, or executive decision impact.",
+      "receivedDateTime": "2026-10-12T10:45:00Z",
+      "isRead": false,
+      "hasAttachments": false
+    },
+    "/v1.0/me/messages/tom-incident-noise": {
+      "id": "tom-incident-noise",
+      "conversationId": "conv-tom-incident-noise",
+      "subject": "Re: customer access incident \u2014 resolved",
+      "from": {
+        "emailAddress": {
+          "name": "Casey Rivera",
+          "address": "casey.rivera@example.com"
+        }
+      },
+      "sender": {
+        "emailAddress": {
+          "name": "Casey Rivera",
+          "address": "casey.rivera@example.com"
+        }
+      },
+      "replyTo": [
+        {
+          "emailAddress": {
+            "name": "Casey Rivera",
+            "address": "casey.rivera@example.com"
+          }
+        }
+      ],
+      "toRecipients": [
+        {
+          "emailAddress": {
+            "name": "Tom Hanks",
+            "address": "tom.hanks@example.com"
+          }
+        }
+      ],
+      "ccRecipients": [],
+      "body": {
+        "contentType": "text",
+        "content": "The customer access incident was resolved yesterday. Checks are green and the incident is closed. No further action is needed from Tom."
+      },
+      "bodyPreview": "The customer access incident was resolved yesterday. Checks are green and the incident is closed. No further action is needed from Tom.",
+      "receivedDateTime": "2026-10-12T10:55:00Z",
+      "isRead": false,
+      "hasAttachments": false
+    }
+  }
+}
